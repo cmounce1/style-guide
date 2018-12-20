@@ -1,10 +1,16 @@
+<link rel="stylesheet" href="https://use.typekit.net/fkp5vis.css">
 <style>
   /* Default */
   *{margin:0;padding:0;}
   body{font-family:'Din Alternate', sans-serif;}
+  a:link{text-decoration:none;color:rgb(255, 255, 255, .8);transition:all ease .3s;}
+  a:visited{text-decoration:none;color:rgb(255, 255, 255, .8);}
+  a:active{text-decoration:none;color:rgb(255, 255, 255, .8);}
+  a:hover{color:#fff;}
 
-  /*Sidebar*/
-  .guide-main{width:calc(100% - 300px);margin:auto;}
+  /*Structure*/
+  .guide-main{width:calc(100% - 300px);transform:translate3d(300px,0,0);}
+  .guide-container{margin:3rem;}
   .guide-sidebar{width:300px;position:fixed;top:0;left:0;bottom:0;background-color:#333;color:rgb(255, 255, 255, .8);overflow-y:scroll;}
   .guide-sidebar-content{position:absolute;top:0;left:0;bottom:0;}
   .sidebar-header{}
@@ -12,7 +18,7 @@
   .guide-logo{width:120px;padding:10px;display:block;text-align:center;margin:auto;}
   .guide-title{text-align:center;font-size:1.5em;font-family:'Din Alternate';letter-spacing:1px;}
   .sidebar-main{margin-top:30px;}
-  .sidebar-content-title{text-transform:uppercase;margin: 0 30px;cursor:pointer;padding:10px 0px;}
+  .sidebar-content-title{text-transform:uppercase;margin: 0 30px;cursor:pointer;padding:10px 0px;border-bottom:1px solid rgba(255,255,255,.05);}
   .sidebar-content-title:hover{color:#fff;transition:all ease .3s;}
   .sidebar-content-title::selection{background:none;}
   .sidebar-list{list-style-type:none;background:#282828;width:300px;}
@@ -20,52 +26,114 @@
   .sidebar-list-item:hover{color:#fff;transition:all ease .3s;}
   .last-item{border:none;}
 
-  /*JS Collapse */
+  /*JS Helpers */
   .collapse{display:block;max-height:0px;overflow:hidden;transition:max-height .3s cubic-bezier(0, 1, 0, 1);}
   .show{max-height:99em;transition:max-height .3s ease-in-out;}
-
-  /*Dynamic Branded Content*/
   .dynamic-content{display:none;}
 
-  .parent{display:flex;flex-flow:row wrap;justify-content:space-around;}
+  /*Default Branded Content*/
+  .default-container{width:80%;}
 
-  /* Headings */
-  h1, h2, h3, h4, h5{text-transform:uppercase;}
+  /* Default Branded Headings */
+  h1, h2, h3, h4, h5{font-family:'Helvetica Neue';text-transform:uppercase;}
   h1{font-size:3rem;}
   h2{font-size:2.5rem;}
   h3{font-size:2.25rem}
   h4{font-size:2rem;}
   h5{font-size:1.5rem;}
 
+  /* Default Branded Paragraphs */
+  p{font-size:1.25rem;font-family:'Helvetica Neue';color:#444;line-height:2em;}
+
+  /*Georgia Branded Content*/
+  .default-container{width:80%;}
+  .gb-headings{margin:2em 0;}
+  .size-btns{width:300px;margin:1em 0;}
+  .size-btns button{margin:4px 3px;}
+
+  /* Georgia Branded Headings */
+  #gb-content h1, #gb-content h2, #gb-content h3, #gb-content h4, #gb-content h5{font-family:'Industry';text-transform:uppercase;}
+  #gb-content h1{font-size:3rem;}
+  #gb-content h2{font-size:2.5rem;}
+  #gb-content h3{font-size:2.25rem}
+  #gb-content h4{font-size:2rem;}
+  #gb-content h5{font-size:1.5rem;}
+
+  /* Georgia Branded Paragraphs */
+  #gb-content p{font-size:1.25rem;font-family:'Rajdhani';color:#444;line-height:2em;}
+
+  /*Components*/
+  .gb-btn{appearance:none;border:solid 1px #000;background:#fff;width:220px;height:40px;text-transform:uppercase;font-family:'Industry';font-size:13px;font-weight:600;transition: .2s ease-in;font-weight:bold;}
+  .gb-btn:hover{background:#000;color:#fff;}
+  .gb-btn.cart-btn{background:#000;color:#fff;}
+  .gb-btn.cart-btn:hover{background:#b38950;border:solid 1px #b38950;color:#fff;}
+  .gb-btn.size-btn{background:#fff;color:#000;width:60px;}
+  .gb-btn.size-btn:hover{background:#000;color:#fff;}
+  .gb-btn.selected{background:#000;color:fff;}
+  .gb-btn.unavailable{opacity:.3;}
+  .gb-btn.unavailable:hover{background:#fff;color:#000;}
+
+
+
 
 </style>
 <body>
   <div class="guide-main">
-    <div class="parent">
-      <div class="flex-col">
+    <div class="guide-container">
+        <div id="default-content" class="dynamic-content">
+          <div class="default-container">
+            <h1>Welcome to the Rocky Brands Style Guide</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
         <div id="rb-content" class="dynamic-content">
           This is the Rocky content
         </div>
         <div id="gb-content" class="dynamic-content">
-          This is the Georgia content
+          <h1>Georgia Boot</h1>
+          <p>Murica's Hardest Working Boot</p>
+          <div class="gb-headings">
+            <h4>Headings</h4>
+            <hr><br />
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+          </div>
+          <div class="gb-btns">
+            <h4>Buttons</h4>
+            <button class="gb-btn">Shop Now</button>
+            <button class="gb-btn cart-btn">Add to Cart</button>
+            <div class="size-btns">
+              <button class="gb-btn size-btn">6</button>
+              <button class="gb-btn size-btn">6.5</button>
+              <button class="gb-btn size-btn">7</button>
+              <button class="gb-btn size-btn">7.5</button>
+              <button class="gb-btn size-btn">8</button>
+              <button class="gb-btn size-btn">8.5</button>
+              <button class="gb-btn size-btn selected">9</button>
+              <button class="gb-btn size-btn">9.5</button>
+              <button class="gb-btn size-btn">10</button>
+              <button class="gb-btn size-btn">10.5</button>
+              <button class="gb-btn size-btn">11</button>
+              <button class="gb-btn size-btn">11.5</button>
+              <button class="gb-btn size-btn">12</button>
+              <button class="gb-btn size-btn">12.5</button>
+              <button class="gb-btn size-btn unavailable">13</button>
+            </div>
+          </div>
         </div>
         <div id="db-content" class="dynamic-content">
           This is Durango content
         </div>
-        <div id="default-content" class="dynamic-content">
-          This is the default content
-        </div>
-      </div>
-      <div class="flex-col">
-        <button>Hi</button>
       </div>
     </div>
-  </div>
   <div class="guide-sidebar">
     <div class="guide-sidebar-content">
       <div class="sidebar-header">
         <div class="guide-branding">
-          <img class="guide-logo" src="img/rockybrands-logo.svg" alt="">
+          <a href="/"><img class="guide-logo" src="img/rockybrands-logo.svg" alt=""></a>
           <h1 class="guide-title">Style Guide</h1>
         </div>
       </div>
