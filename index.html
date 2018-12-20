@@ -1,0 +1,173 @@
+<style>
+  /* Default */
+  *{margin:0;padding:0;}
+  body{font-family:'Din Alternate', sans-serif;}
+
+  /*Sidebar*/
+  .guide-main{width:calc(100% - 300px);margin:auto;}
+  .guide-sidebar{width:300px;position:fixed;top:0;left:0;bottom:0;background-color:#333;color:rgb(255, 255, 255, .8);overflow-y:scroll;}
+  .guide-sidebar-content{position:absolute;top:0;left:0;bottom:0;}
+  .sidebar-header{}
+  .guide-branding{}
+  .guide-logo{width:120px;padding:10px;display:block;text-align:center;margin:auto;}
+  .guide-title{text-align:center;font-size:1.5em;font-family:'Din Alternate';letter-spacing:1px;}
+  .sidebar-main{margin-top:30px;}
+  .sidebar-content-title{text-transform:uppercase;margin: 0 30px;cursor:pointer;padding:10px 0px;}
+  .sidebar-content-title:hover{color:#fff;transition:all ease .3s;}
+  .sidebar-content-title::selection{background:none;}
+  .sidebar-list{list-style-type:none;background:#282828;width:300px;}
+  .sidebar-list-item{margin: 0 50px;padding:10px 10px;font-size:13px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition: .5s cubic-bezier(0, 1, 0, 1);border-bottom:1px solid rgba(255,255,255,.05);}
+  .sidebar-list-item:hover{color:#fff;transition:all ease .3s;}
+  .last-item{border:none;}
+
+  /*JS Collapse */
+  .collapse{display:block;max-height:0px;overflow:hidden;transition:max-height .3s cubic-bezier(0, 1, 0, 1);}
+  .show{max-height:99em;transition:max-height .3s ease-in-out;}
+
+  /*Dynamic Branded Content*/
+  .dynamic-content{display:none;}
+
+  .parent{display:flex;flex-flow:row wrap;justify-content:space-around;}
+
+  /* Headings */
+  h1, h2, h3, h4, h5{text-transform:uppercase;}
+  h1{font-size:3rem;}
+  h2{font-size:2.5rem;}
+  h3{font-size:2.25rem}
+  h4{font-size:2rem;}
+  h5{font-size:1.5rem;}
+
+
+</style>
+<body>
+  <div class="guide-main">
+    <div class="parent">
+      <div class="flex-col">
+        <div id="rb-content" class="dynamic-content">
+          This is the Rocky content
+        </div>
+        <div id="gb-content" class="dynamic-content">
+          This is the Georgia content
+        </div>
+        <div id="db-content" class="dynamic-content">
+          This is Durango content
+        </div>
+        <div id="default-content" class="dynamic-content">
+          This is the default content
+        </div>
+      </div>
+      <div class="flex-col">
+        <button>Hi</button>
+      </div>
+    </div>
+  </div>
+  <div class="guide-sidebar">
+    <div class="guide-sidebar-content">
+      <div class="sidebar-header">
+        <div class="guide-branding">
+          <img class="guide-logo" src="img/rockybrands-logo.svg" alt="">
+          <h1 class="guide-title">Style Guide</h1>
+        </div>
+      </div>
+      <div class="sidebar-main">
+        <nav class="sidebar-brands">
+          <div class="sidebar-content-title" data-toggle="collapse" data-target=".collapse.first" data-text="Collapse">Brands</div>
+          <div class="sidebar-content-list">
+            <ul class="sidebar-list collapse first">
+              <li class="sidebar-list-item"><a href="./?brand=rb-content">Rocky Boots</a></li>
+              <li class="sidebar-list-item"><a href="./?brand=gb-content">Georgia Boot</a></li>
+              <li class="sidebar-list-item"><a href="./?brand=db-content">Durango Boot</a></li>
+              <li class="sidebar-list-item">4Eursole</li>
+              <li class="sidebar-list-item">Lehigh Outfitters</li>
+              <li class="sidebar-list-item">Lehigh Safety Shoes</li>
+              <li class="sidebar-list-item">Slipgrips</li>
+              <li class="sidebar-list-item last-item">Shoe Angel</li>
+            </ul>
+          </div>
+        </nav>
+        <nav class="sidebar-typography">
+          <div class="sidebar-content-title" data-toggle="collapse" data-target=".collapse.second" data-text="Collapse">Typography</div>
+          <div class="sidebar-content-list">
+            <ul class="sidebar-list collapse second">
+              <li class="sidebar-list-item">Fonts</li>
+              <li class="sidebar-list-item">Headings</li>
+              <li class="sidebar-list-item">Paragraphs</li>
+              <li class="sidebar-list-item last-item">Text Links</li>
+            </ul>
+          </div>
+        </nav>
+        <nav class="sidebar-components">
+          <div class="sidebar-content-title" data-toggle="collapse" data-target=".collapse.third" data-text="Collapse">Elements</div>
+          <div class="sidebar-content-list">
+            <ul class="sidebar-list collapse third">
+              <li class="sidebar-list-item">Buttons</li>
+              <li class="sidebar-list-item">Input Fields & Forms</li>
+              <li class="sidebar-list-item">Icons</li>
+              <li class="sidebar-list-item last-item">Sliders</li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  const fnmap = {
+    'toggle': 'toggle',
+      'show': 'add',
+      'hide': 'remove'
+  };
+
+  const collapse = (selector, cmd) => {
+    const targets = Array.from(document.querySelectorAll(selector));
+    targets.forEach(target => {
+      target.classList[fnmap[cmd]]('show');
+    });
+  }
+
+  // Grab all the trigger elements on the page
+const triggers = Array.from(document.querySelectorAll('[data-toggle="collapse"]'));
+
+// Listen for click events, but only on our triggers
+window.addEventListener('click', (ev) => {
+  const elm = ev.target;
+  if (triggers.includes(elm)) {
+    const selector = elm.getAttribute('data-target');
+    collapse(selector, 'toggle');
+  }
+}, false);
+
+// Parse the URL parameter
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+// Give the parameter a variable name
+var dynamicContent = getParameterByName('brand');
+
+$(document).ready(function() {
+ // Check if the URL parameter is Rocky
+ if (dynamicContent == 'rb-content') {
+   $('#rb-content').show();
+ }
+ // Check if the URL parameter is Georgia
+ else if (dynamicContent == 'gb-content') {
+   $('#gb-content').show();
+ }
+ // Check if the URL parameter is Durango
+ else if (dynamicContent == 'db-content') {
+   $('#db-content').show();
+ }
+ // Check if the URL parmeter is empty or not defined, display default content
+ else {
+   $('#default-content').show();
+ }
+});
+</script>
