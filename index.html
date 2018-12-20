@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="https://use.typekit.net/fkp5vis.css">
+<link href="https://fonts.googleapis.com/css?family=Rajdhani:400,500,600,700" rel="stylesheet">
 <style>
   /* Default */
   *{margin:0;padding:0;}
-  body{font-family:'Din Alternate', sans-serif;}
+  body{font-family:'urw-din', sans-serif;}
   a:link{text-decoration:none;color:rgb(255, 255, 255, .8);transition:all ease .3s;}
   a:visited{text-decoration:none;color:rgb(255, 255, 255, .8);}
   a:active{text-decoration:none;color:rgb(255, 255, 255, .8);}
@@ -11,12 +12,12 @@
   /*Structure*/
   .guide-main{width:calc(100% - 300px);transform:translate3d(300px,0,0);}
   .guide-container{margin:3rem;}
-  .guide-sidebar{width:300px;position:fixed;top:0;left:0;bottom:0;background-color:#333;color:rgb(255, 255, 255, .8);overflow-y:scroll;}
+  .guide-sidebar{width:300px;position:fixed;top:0;left:0;bottom:0;background-color:#333;color:rgb(255, 255, 255, .8);overflow-y:auto;}
   .guide-sidebar-content{position:absolute;top:0;left:0;bottom:0;}
   .sidebar-header{}
   .guide-branding{}
   .guide-logo{width:120px;padding:10px;display:block;text-align:center;margin:auto;}
-  .guide-title{text-align:center;font-size:1.5em;font-family:'Din Alternate';letter-spacing:1px;}
+  .guide-title{text-align:center;font-size:1.5em;font-family:'urw-din';letter-spacing:1px;}
   .sidebar-main{margin-top:30px;}
   .sidebar-content-title{text-transform:uppercase;margin: 0 30px;cursor:pointer;padding:10px 0px;border-bottom:1px solid rgba(255,255,255,.05);}
   .sidebar-content-title:hover{color:#fff;transition:all ease .3s;}
@@ -72,9 +73,6 @@
   .gb-btn.selected{background:#000;color:fff;}
   .gb-btn.unavailable{opacity:.3;}
   .gb-btn.unavailable:hover{background:#fff;color:#000;}
-
-
-
 
 </style>
 <body>
@@ -133,7 +131,7 @@
     <div class="guide-sidebar-content">
       <div class="sidebar-header">
         <div class="guide-branding">
-          <a href="/"><img class="guide-logo" src="img/rockybrands-logo.svg" alt=""></a>
+          <a href=""><img class="guide-logo" src="img/rockybrands-logo.svg" alt=""></a>
           <h1 class="guide-title">Style Guide</h1>
         </div>
       </div>
