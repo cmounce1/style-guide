@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,500,600,700" rel="stylesheet">
 <style>
   /* Default */
-  *{margin:0;padding:0;}
+  *{margin:0;padding:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;}
   body{font-family:'urw-din', sans-serif;}
   a:link{text-decoration:none;color:rgb(255, 255, 255, .8);transition:all ease .3s;}
   a:visited{text-decoration:none;color:rgb(255, 255, 255, .8);}
@@ -27,13 +27,21 @@
   .sidebar-list-item:hover{color:#fff;transition:all ease .3s;}
   .last-item{border:none;}
 
-  /*JS Helpers */
+
+  /*Helpers */
   .collapse{display:block;max-height:0px;overflow:hidden;transition:max-height .3s cubic-bezier(0, 1, 0, 1);}
   .show{max-height:99em;transition:max-height .3s ease-in-out;}
   .dynamic-content{display:none;}
 
+
   /*Default Branded Content*/
   .default-container{width:80%;}
+  .color-item{min-width: 150px;display:inline-block;margin-right: 1em;}
+  .color-box{height:100px;width:100px;border-radius:1em;background:lightgray;box-shadow: 0 0 6px rgb(0, 0, 0, .2);}
+  .color-info{display:block;margin: 10px 0;}
+  .color-info ul{list-style-type:none;}
+  .color-title{font-weight:700;}
+
 
   /* Default Branded Headings */
   h1, h2, h3, h4, h5{font-family:'Helvetica Neue';text-transform:uppercase;}
@@ -47,32 +55,40 @@
   p{font-size:1.25rem;font-family:'Helvetica Neue';color:#444;line-height:2em;}
 
   /*Georgia Branded Content*/
-  .default-container{width:80%;}
-  .gb-headings{margin:2em 0;}
-  .size-btns{width:300px;margin:1em 0;}
-  .size-btns button{margin:4px 3px;}
+  .georgia .cont{margin:2em 0;}
+  .georgia .size-btns{width:300px;margin:1em 0;}
+  .georgia .size-btns button{margin:4px 3px;}
+
+  /* Georgia Color Palette*/
+  .gb-white{background:#fff;}
+  .gb-black{background:#000;}
+  .gb-gold{background:#b38950;}
+  .gb-gray{background:#949494;}
+
 
   /* Georgia Branded Headings */
-  #gb-content h1, #gb-content h2, #gb-content h3, #gb-content h4, #gb-content h5{font-family:'Industry';text-transform:uppercase;}
-  #gb-content h1{font-size:3rem;}
-  #gb-content h2{font-size:2.5rem;}
-  #gb-content h3{font-size:2.25rem}
-  #gb-content h4{font-size:2rem;}
-  #gb-content h5{font-size:1.5rem;}
+  .georgia h1, .georgia h2, .georgia h3, .georgia h4, .georgia h5{font-family:'Industry';text-transform:uppercase;}
+  .georgia h1{font-size:3rem;}
+  .georgia h2{font-size:2.5rem;}
+  .georgia h3{font-size:2.25rem}
+  .georgia h4{font-size:2rem;}
+  .georgia h5{font-size:1.5rem;}
 
   /* Georgia Branded Paragraphs */
-  #gb-content p{font-size:1.25rem;font-family:'Rajdhani';color:#444;line-height:2em;}
+  .georgia p{font-size:1.25rem;font-family:'Industry';color:#444;line-height:2em;}
 
   /*Components*/
-  .gb-btn{appearance:none;border:solid 1px #000;background:#fff;width:220px;height:40px;text-transform:uppercase;font-family:'Industry';font-size:13px;font-weight:600;transition: .2s ease-in;font-weight:bold;}
-  .gb-btn:hover{background:#000;color:#fff;}
-  .gb-btn.cart-btn{background:#000;color:#fff;}
-  .gb-btn.cart-btn:hover{background:#b38950;border:solid 1px #b38950;color:#fff;}
-  .gb-btn.size-btn{background:#fff;color:#000;width:60px;}
-  .gb-btn.size-btn:hover{background:#000;color:#fff;}
-  .gb-btn.selected{background:#000;color:fff;}
-  .gb-btn.unavailable{opacity:.3;}
-  .gb-btn.unavailable:hover{background:#fff;color:#000;}
+  .georgia .btn{appearance:none;border:solid 1px #949494;color:#000;background:#fff;width:220px;height:48px;text-transform:uppercase;font-family:'Industry';font-size:13px;font-weight:600;transition: .2s ease-in;font-weight:bold;outline: none;}
+  .georgia .btn:hover{background:#000;color:#fff;}
+  .georgia .cart-btn{background:#000;color:#fff;}
+  .georgia .cart-btn:hover{background:#b38950;border:solid 1px #b38950;color:#fff;}
+  .georgia .size-btn{width:48px;height:48px;}
+  .georgia .non-selected{background:#f8f8f8;}
+  .georgia .unavailable{opacity:.3;}
+  .georgia .unavailable:hover{background:#fff;color:#000;}
+  .georgia .btn:focus{border-bottom: solid 3px #b38950;box-sizing:border-box;}
+  .georgia .btn:active{border-bottom: solid 3px #b38950;box-sizing:border-box;}
+
 
 </style>
 <body>
@@ -87,39 +103,93 @@
         <div id="rb-content" class="dynamic-content">
           This is the Rocky content
         </div>
-        <div id="gb-content" class="dynamic-content">
+        <div id="gb-content" class="georgia dynamic-content">
           <h1>Georgia Boot</h1>
           <p>Murica's Hardest Working Boot</p>
-          <div class="gb-headings">
+          <div class="cont">
+            <h4>Color Palette</h4>
+            <hr><br />
+            <div class="color-item">
+            <div class="color-box gb-white"></div>
+            <div class="color-info">
+              <ul>
+                <li class="color-title">White</li>
+                <li>Hex: #FFFFFF</li>
+                <li>RGB: (255,255,255)</li>
+              </ul>
+            </div>
+            </div>
+            <div class="color-item">
+            <div class="color-box gb-black"></div>
+            <div class="color-info">
+              <ul>
+                <li class="color-title">Black</li>
+                <li>Hex: #000000</li>
+                <li>RGB: (0,0,0)</li>
+              </ul>
+            </div>
+            </div>
+            <div class="color-item">
+            <div class="color-box gb-gold"></div>
+            <div class="color-info">
+              <ul>
+                <li class="color-title">Gold</li>
+                <li>Hex: #BE8950</li>
+                <li>RGB: (179,137,80)</li>
+              </ul>
+            </div>
+            </div>
+            <div class="color-item">
+            <div class="color-box gb-gray"></div>
+            <div class="color-info">
+              <ul>
+                <li class="color-title">Gray</li>
+                <li>Hex: #949494</li>
+                <li>RGB: (127,196,253)</li>
+              </ul>
+            </div>
+            </div>
+          </div>
+          <div class="cont">
             <h4>Headings</h4>
             <hr><br />
             <h1>Heading 1</h1>
+            <p>font-weight:800;font-size:4.209em;</p>
             <h2>Heading 2</h2>
+            <p>font-weight:600;font-size:4.209em;</p>
             <h3>Heading 3</h3>
+            <p>font-weight:800;font-size:4.209em;</p>
             <h4>Heading 4</h4>
+            <p>font-weight:800;font-size:4.209em;</p>
             <h5>Heading 5</h5>
+            <p>font-weight:800;font-size:4.209em;</p>
           </div>
-          <div class="gb-btns">
+          <div class="cont">
             <h4>Buttons</h4>
-            <button class="gb-btn">Shop Now</button>
-            <button class="gb-btn cart-btn">Add to Cart</button>
+            <hr><br />
+            <button class="btn">Shop Now</button>
+            <button class="btn cart-btn">Add to Cart</button>
             <div class="size-btns">
-              <button class="gb-btn size-btn">6</button>
-              <button class="gb-btn size-btn">6.5</button>
-              <button class="gb-btn size-btn">7</button>
-              <button class="gb-btn size-btn">7.5</button>
-              <button class="gb-btn size-btn">8</button>
-              <button class="gb-btn size-btn">8.5</button>
-              <button class="gb-btn size-btn selected">9</button>
-              <button class="gb-btn size-btn">9.5</button>
-              <button class="gb-btn size-btn">10</button>
-              <button class="gb-btn size-btn">10.5</button>
-              <button class="gb-btn size-btn">11</button>
-              <button class="gb-btn size-btn">11.5</button>
-              <button class="gb-btn size-btn">12</button>
-              <button class="gb-btn size-btn">12.5</button>
-              <button class="gb-btn size-btn unavailable">13</button>
+              <button class="btn size-btn">6</button>
+              <button class="btn size-btn">6.5</button>
+              <button class="btn size-btn">7</button>
+              <button class="btn size-btn">7.5</button>
+              <button class="btn size-btn">8</button>
+              <button class="btn size-btn">8.5</button>
+              <button class="btn size-btn non-selected">9</button>
+              <button class="btn size-btn">9.5</button>
+              <button class="btn size-btn">10</button>
+              <button class="btn size-btn">10.5</button>
+              <button class="btn size-btn">11</button>
+              <button class="btn size-btn">11.5</button>
+              <button class="btn size-btn">12</button>
+              <button class="btn size-btn">12.5</button>
+              <button class="btn size-btn unavailable">13</button>
             </div>
+          </div>
+          <div class="cont">
+            <h4>Typography</h4>
+              <hr><br />
           </div>
         </div>
         <div id="db-content" class="dynamic-content">
